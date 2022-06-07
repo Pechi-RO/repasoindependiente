@@ -40,3 +40,10 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->resource('cursos',CursoController::class);
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->put('cursos1/{curso}', [CursoController::class, 'cambiarActivo'])->name('cursos.cambiarActivo');

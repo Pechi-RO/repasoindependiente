@@ -32,14 +32,35 @@
             <x-jet-input type="radio" name="activo" value="1"></x-jet-input>
             <x-jet-label>NO</x-jet-label>
             <x-jet-input type="radio" name="activo" value="2"></x-jet-input>
-
+            
+            @error('activo')
+            <br>
+            <p class="text-red-800">{{$message}}</p>
+            @enderror
         </div>
 
         <div class="flex">
             <x-jet-label>Imagen:</x-jet-label>
             <input type="file" name="imagen"  accept="image/*" id="image" >
-            <img src="/storage/noimage.png" class="bg-cover bg-center" id="img">
+            <img src="/storage/cursos/no-img.png" class="bg-cover bg-center" id="img">
 
+            @error('imagen')
+            <br>
+            <p class="text-red-800">{{$message}}</p>
+            @enderror
+
+        </div>
+
+        <div class="flex mt-2 mb-2">
+            <x-jet-label>Categoria:</x-jet-label>
+            <select name="category_id">
+
+            @foreach ($category as $item)
+
+                <option class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" value="{{$item->id}}">{{$item->nombre}}</option>
+
+            @endforeach
+        </select>
 
 
         </div>

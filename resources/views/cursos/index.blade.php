@@ -23,7 +23,8 @@
                             <th scope="col" class="px-6 py-3">
                                 Activo
                             </th>
-                            <th scope="col" colspan="2" class="px-6 py-3">
+
+                            <th scope="col" colspan="2" class="px-6 py-3  mx-auto">
                                 Acciones
                             </th>
 
@@ -36,7 +37,9 @@
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                             <td class="px-6 py-4">
-                                <a href="{{route('cursos.show',$item)}}">{{$item->id}}</a>
+
+
+                                <a class="rounded-full bg-red-600 text-white" href="{{route('cursos.show',$item)}}"><x-jet-button> {{$item->id}}</x-jet-button></a>
                             </td>
 
                             <th colspan="2" scope="row"
@@ -49,8 +52,17 @@
                             <td class="px-6 py-4 @if ($item->activo=="SI") text-blue-700 @else text-red-700 @endif">
                                 {{$item->activo}}
                             </td>
+
                             <td colspan="2" class="px-6 py-4">
-                                Acciones
+                                <td colspan="2" class="px-6 py-4">
+                                    <form action="{{route('cursos.destroy',$item)}}" method="POST">
+                                    @csrf
+                                        @method('DELETE')
+                                        <div class="flex">
+                                        <x-jet-button class="bg-blue-600 hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300"><i class="fas fa-trash "></i> Borrar</x-jet-button>
+
+                                </form>
+                                <a href="{{route('cursos.edit',$item)}}" class="inline-flex items-center px-4 py-2 bg-yellow-800 border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-yellow-700 active:bg-yellow-900 focus:outline-none focus:border-yellow-900 focus:ring focus:ring-yellow-300 disabled:opacity-25 transition"><i class="fa-solid fa-pen-to-square"></i>Update</a>
                             </td>
 
 
