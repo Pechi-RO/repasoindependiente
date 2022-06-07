@@ -82,17 +82,5 @@
 
     </x-slot>
 
-    @if(session('info')){
-        <script>
-            Swal.fire({
-          title: info,
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        })
-        </script>
-        }@endif
+
 </x-app-layout>
